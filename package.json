@@ -1,0 +1,17 @@
+{
+  "name": "koshien-slack-notifier",
+  "version": "1.0.0",
+  "description": "高校野球の試合結果をSlackに通知するスクリプト",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.3"
+  }
+}

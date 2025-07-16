@@ -1,0 +1,29 @@
+name: Notify Slack with High School Baseball Game Info
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # JST 21:00 毎日実行（UTCで12:00）
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      GAS_API_URL: ${{ secrets.GAS_API_URL }}
+      GAS_API_KEY: ${{ secrets.GAS_API_KEY }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run script
+        run: npm run start
